@@ -15,10 +15,10 @@ class UsersCanCreateStatusesTest extends DuskTestCase
     /**
      * A Dusk test example.
      *
-     * @return void
+     * @test
      * @throws Throwable
      */
-    public function testExample()
+    public function usersCanCreateStatusesTest()
     {
         $user = User::factory()->create();
 
@@ -27,7 +27,9 @@ class UsersCanCreateStatusesTest extends DuskTestCase
                     ->visit('/')
                     ->type('body', 'Mi primer status') // Llena el textarea
                     ->press('#create-status') // Envia el form
-                    ->screenshot('create-status') // Crea una imagen con este nombre
+                    ->waitForText('Mi primer status')
+                    // Crea una imagen con este nombre
+                    //->screenshot('create-status')
                     ->assertSee('Mi primer status'); // Espera ver esto
         });
     }
