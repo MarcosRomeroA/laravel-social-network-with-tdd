@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
-//php artisan route:clear //Sirve para limpiar el cache de las rutas // Requiere authentication
+Route::get('statuses', [StatusesController::class, 'index']);
+
 Route::post('statuses', [StatusesController::class, 'store'])->name('statuses.store')->middleware('auth');
 
 Auth::routes();
